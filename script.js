@@ -4,18 +4,19 @@ const songTitle = document.getElementById("songTitle");
 const playBtn =  document.querySelector(".playBtn");
 const prevBtn = document.querySelector(".prevBtn");
 const skipBtn = document.querySelector(".skipBtn");
+const coverImage = document.querySelector(".coverImage");
 
 //audio
 const audio = new Audio();
 
 
 let songs = [
-    {title: "Her Old Friends",artist: "PartynextDoor", file: "assets/music/herOldFriends.mp3"},
-    {title: "Lights Out", artist: "Chris Brown", file: "assets/music/herOldFriends.mp3"},
-    {title: "Brand New", artist: "Drake", file: "assets/music/herOldFriends.mp3"},
-    {title: "Come Through", artist: "H.E.R", file: "assets/music/herOldFriends.mp3"},
-    {title: "Slow Down", artist: "Chase Atlantic", file: "assets/music/herOldFriends.mp3"}
-]
+    {title: "Her Old Friends",artist: "PartynextDoor", file: "assets/music/herOldFriends.mp3", cover: "assets/images/herOldFriends.jpg"},
+    {title: "Lights Out", artist: "Chris Brown", file: "assets/music/lightsOut.mp3", cover: "assets/images/herOldFriends.jpg"},
+    {title: "Brand New", artist: "Drake", file: "assets/music/brandNew.mp3", cover: "assets/images/herOldFriends.jpg"},
+    {title: "Come Through", artist: "H.E.R", file: "assets/music/comeThrough.mp3", cover: "assets/images/herOldFriends.jpg"},
+    {title: "Slow Down", artist: "Chase Atlantic", file: "assets/music/slowDown.mp3", cover: "assets/images/herOldFriends.jpg"}
+];
 
 let isPlaying = false;
 let currentSongIndex = 0;
@@ -29,6 +30,8 @@ audio.addEventListener("loadedmetadata", () => {
 function loadSong(){
     songTitle.textContent = songs[currentSongIndex].title;
     audio.src = songs[currentSongIndex].file;
+    coverImage.style.backgroundImage = `url(${songs[currentSongIndex].cover})`;
+    console.log(coverImage);
 }
 loadSong();
 
