@@ -153,6 +153,18 @@ body {
     animation: liquidFlow 3s linear infinite;
     border-radius: 10px;
  }
+
+ .shuffleBtn{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: rgba(239, 143, 26, 0.8);
+    border-radius: 10px;
+    outline: none;
+    font-size: 20px;
+    bottom: -150px;
+    right: 5px;
+ }
  
 .buttons{
     display: flex;
