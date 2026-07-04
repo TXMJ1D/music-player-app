@@ -7,6 +7,7 @@ const skipBtn = document.querySelector(".skipBtn");
 const coverImage = document.querySelector(".coverImage");
 // const progressBar = document.querySelector(".progressBar");
 const progressFill = document.querySelector(".progressFill");
+const shuffleBtn = document.querySelector(".shuffleBtn");
 
 //audio
 const audio = new Audio();
@@ -22,6 +23,14 @@ let songs = [
     {title: "Who? What!", artist: "Travis Scott", file: "assets/music/whoWhat.mp3", cover:"assets/images/whoWhat.png"}
 ];
 
+let songsBackUp = [];
+let songsShuffled = [];
+
+for (let i=0;i<songs.length;i++){
+    songsBackUp.push(songs[i]);
+}
+
+let isClicked  = false;
 let isPlaying = false;
 let currentSongIndex = 0;
 let duration = 0;
@@ -57,6 +66,36 @@ function loadSong(){
     progressFill.value = 0;
 }
 loadSong();
+
+function shuffle(){
+    let shuffleIndex = songs.length;
+
+    for (i=0;i<songs.length;i++){
+        songsShuffled.push(songs[i]);
+    }
+
+    while (shuffleIndex != 0){
+        let randomIndex = Math.floor(Math.random() * shuffleIndex);
+        shuffleIndex--;
+        //swap current elements
+        [songsShuffled[shuffleIndex], songsShuffled[randomIndex]] = [songsShuffled[randomIndex], songsShuffled[shuffleIndex]];
+    }
+}
+
+shuffleBtn.addEventListener("click", () => {
+    if (isClicked === false){
+        isClicked = true;
+        shuffle(songs);
+        songs = songsShuffled;
+        shuffleBtn.style.outline = `3px solid white`;
+    }
+    else{
+        songsShuffled = [];
+        isClicked = false;
+        shuffleBtn.style.outline = `none`;
+        songs = songsBackUp;
+    }
+})
 
 playBtn.addEventListener("click", () => {
     if (isPlaying === false){

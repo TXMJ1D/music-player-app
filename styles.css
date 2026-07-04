@@ -155,18 +155,18 @@ body {
  }
 
  .shuffleBtn{
-    position: absolute;
+    position: fixed;
     width: 30px;
     height: 30px;
     background-color: rgba(239, 143, 26, 0.8);
     background-repeat: no-repeat;
     background-image: url(assets/images/shuffleIcon.png);
-    background-size: 18px;
+    background-size: 15px;
     border-radius: 10px;
+    background-position: center;
     outline: none;
-    font-size: 20px;
-    bottom: -150px;
-    right: 5px;
+    bottom: 160px;
+    right: 20px;
  }
  
 .buttons{
