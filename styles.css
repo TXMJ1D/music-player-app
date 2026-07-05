@@ -176,10 +176,11 @@ body {
     background-color: rgba(239, 143, 26, 0.8);
     background-position: center;
     background-repeat: no-repeat;
+    background-image: url("assets/images/loopIcon.png");
     background-size: 15px;
     border-radius: 10px;
     outline: none;
-    bottom: 180px;
+    bottom: 200px;
     right: 20px;
  }
  

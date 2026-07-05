@@ -8,6 +8,7 @@ const coverImage = document.querySelector(".coverImage");
 // const progressBar = document.querySelector(".progressBar");
 const progressFill = document.querySelector(".progressFill");
 const shuffleBtn = document.querySelector(".shuffleBtn");
+const loopBtn  = document.querySelector(".loopBtn");
 
 //audio
 const audio = new Audio();
@@ -25,13 +26,15 @@ let songs = [
 
 let songsBackUp = [];
 let songsShuffled = [];
+let songsLooped = [];
 
 //create backup tracklist of orginal
 for (let i=0;i<songs.length;i++){
     songsBackUp.push(songs[i]);
 }
 
-let isClicked  = false;
+let isShuffleClicked  = false;
+let isLoopClicked = false;
 let isPlaying = false;
 let currentSongIndex = 0;
 let duration = 0;
@@ -58,6 +61,17 @@ audio.addEventListener("timeupdate", () => {
     progressFill.style.height = `${percentage}%`;
 });
 
+audio.addEventListener("ended", () => {
+    currentSongIndex++
+    if (currentSongIndex >= songs.length){
+        currentSongIndex = 0;
+    }
+    loadSong();
+    audio.play();
+    playBtn.textContent = "⏸";
+    isPlaying = true;
+})
+
 function loadSong(){
     songTitle.textContent = songs[currentSongIndex].title;
     audio.src = songs[currentSongIndex].file;
@@ -83,16 +97,37 @@ function shuffle(){
     }
 }
 
+function loop(){
+    songsLooped.push(songs[currentSongIndex]);
+    audio.loop = true;
+}
+
+loopBtn.addEventListener("click", () => {
+    if (isLoopClicked === false){
+        isLoopClicked = true;
+        loop(songs);
+        songs = songsLooped;
+        loopBtn.style.outline = `3px solid white`;
+    }
+    else{
+        isLoopClicked = false;
+        audio.loop = true;
+        songsLooped = [];
+        loopBtn.style.outline = `none`;
+        songs = songsBackUp;
+    }
+})
+
 shuffleBtn.addEventListener("click", () => {
-    if (isClicked === false){
-        isClicked = true;
+    if (isShuffleClicked === false){
+        isShuffleClicked = true;
         shuffle(songs);
         songs = songsShuffled;
         shuffleBtn.style.outline = `3px solid white`;
     }
     else{
         songsShuffled = [];
-        isClicked = false;
+        isShuffleClicked = false;
         shuffleBtn.style.outline = `none`;
         songs = songsBackUp;
     }
