@@ -26,6 +26,7 @@ let songs = [
 let songsBackUp = [];
 let songsShuffled = [];
 
+//create backup tracklist of orginal
 for (let i=0;i<songs.length;i++){
     songsBackUp.push(songs[i]);
 }
