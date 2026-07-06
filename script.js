@@ -9,6 +9,7 @@ const coverImage = document.querySelector(".coverImage");
 const progressFill = document.querySelector(".progressFill");
 const shuffleBtn = document.querySelector(".shuffleBtn");
 const loopBtn  = document.querySelector(".loopBtn");
+const volumeUpBtn = document.querySelector(".volumeUpBtn");
 
 //audio
 const audio = new Audio();
@@ -43,6 +44,7 @@ audio.addEventListener("loadedmetadata", () => {
     duration = audio.duration
     console.log(duration);
 });
+
 
 audio.addEventListener("timeupdate", () => {
     let currentDuration = audio.currentTime;
@@ -111,7 +113,7 @@ loopBtn.addEventListener("click", () => {
     }
     else{
         isLoopClicked = false;
-        audio.loop = true;
+        audio.loop = false;
         songsLooped = [];
         loopBtn.style.outline = `none`;
         songs = songsBackUp;
