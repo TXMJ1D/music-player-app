@@ -9,11 +9,11 @@ const coverImage = document.querySelector(".coverImage");
 const progressFill = document.querySelector(".progressFill");
 const shuffleBtn = document.querySelector(".shuffleBtn");
 const loopBtn  = document.querySelector(".loopBtn");
-const volumeUpBtn = document.querySelector(".volumeUpBtn");
+const upVolumeBtn = document.querySelector(".upVolumeBtn");
 
 //audio
 const audio = new Audio();
-
+audio.volume = 0.1;
 
 let songs = [
     {title: "Her Old Friends",artist: "PartynextDoor", file: "assets/music/herOldFriends.mp3", cover: "assets/images/herOldFriends.jpg"},
@@ -104,6 +104,12 @@ function loop(){
     audio.loop = true;
 }
 
+upVolumeBtn.addEventListener("click", () => {
+    if (audio.volume < 1){
+        audio.volume += 0.05;
+    }
+});
+
 loopBtn.addEventListener("click", () => {
     if (isLoopClicked === false){
         isLoopClicked = true;
@@ -133,7 +139,7 @@ shuffleBtn.addEventListener("click", () => {
         shuffleBtn.style.outline = `none`;
         songs = songsBackUp;
     }
-})
+});
 
 playBtn.addEventListener("click", () => {
     if (isPlaying === false){
