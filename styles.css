@@ -154,6 +154,21 @@ body {
     border-radius: 10px;
  }
 
+ .upVolumeBtn{
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    background-color: rgba(239, 143, 26, 0.8);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 25px;
+    background-image: url(assets/images/volumeUp.png);
+    border-radius: 10px;
+    outline: none;
+    bottom: 290px;
+    right:20px;
+ }
+
  .shuffleBtn{
     position: fixed;
     width: 30px;

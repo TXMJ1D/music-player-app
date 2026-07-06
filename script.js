@@ -107,7 +107,7 @@ loopBtn.addEventListener("click", () => {
         isLoopClicked = true;
         loop(songs);
         songs = songsLooped;
-        loopBtn.style.outline = `3px solid white`;
+        loopBtn.style.outline = `2px solid white`;
     }
     else{
         isLoopClicked = false;
@@ -123,7 +123,7 @@ shuffleBtn.addEventListener("click", () => {
         isShuffleClicked = true;
         shuffle(songs);
         songs = songsShuffled;
-        shuffleBtn.style.outline = `3px solid white`;
+        shuffleBtn.style.outline = `2px solid white`;
     }
     else{
         songsShuffled = [];
