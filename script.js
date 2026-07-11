@@ -10,10 +10,10 @@ const progressFill = document.querySelector(".progressFill");
 const shuffleBtn = document.querySelector(".shuffleBtn");
 const loopBtn  = document.querySelector(".loopBtn");
 const upVolumeBtn = document.querySelector(".upVolumeBtn");
+const downVolumeBtn  = document.querySelector(".downVolumeBtn");
 
 //audio
 const audio = new Audio();
-audio.volume = 0.1;
 
 let songs = [
     {title: "Her Old Friends",artist: "PartynextDoor", file: "assets/music/herOldFriends.mp3", cover: "assets/images/herOldFriends.jpg"},
@@ -103,6 +103,12 @@ function loop(){
     songsLooped.push(songs[currentSongIndex]);
     audio.loop = true;
 }
+
+downVolumeBtn.addEventListener("click", () => {
+    if (audio.volume > 0){
+        audio.volume -= 0.05;
+    }
+});
 
 upVolumeBtn.addEventListener("click", () => {
     if (audio.volume < 1){
